@@ -1,0 +1,34 @@
+{
+  "name": "oe-o-cli",
+  "version": "0.0.0",
+  "description": "The oe-o command line tool is a tool that allows you to install mods via the commandline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OE-O/oe-o-cli.git"
+  },
+  "keywords": [
+    "command-line-tool",
+    "cli",
+    "mods",
+    "steam",
+    "oeo",
+    "oe-o"
+  ],
+  "author": "OE-O Modding Team",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/OE-O/oe-o-cli/issues"
+  },
+  "homepage": "https://github.com/OE-O/oe-o-cli#readme",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
+  }
+}
