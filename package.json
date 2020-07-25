@@ -1,12 +1,12 @@
 {
-  "name": "oe-o-cli",
-  "version": "0.0.0",
+  "name": "oeo",
+  "version": "0.0.1",
   "description": "The oe-o command line tool is a tool that allows you to install mods via the commandline.",
-  "main": "index.js",
+  "main": "./src/bin/index.js",
   "bin": "./src/bin/index.js",
   "scripts": {
-    "homeDebug": "npm link && C:\\Users\\calum\\AppData\\Roaming\\npm\\oe-o-cli.cmd",
-    "test": "node ./src/scripts/test.js"
+    "test": "node ./src/scripts/test.js",
+    "start": "npm link --force && oeo"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,8 @@
     "url": "https://github.com/OE-O/oe-o-cli/issues"
   },
   "homepage": "https://github.com/OE-O/oe-o-cli#readme",
-  "devDependencies": {
-    "prettier": "^2.0.5"
-  },
-  "dependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }

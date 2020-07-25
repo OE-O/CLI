@@ -31,8 +31,8 @@ const emojis = {
   Cross: "❌",
 };
 module.exports.emojis = emojis;
-module.exports.color = function color(string, ...colors) {
-  const colorse = colors.join("") + string + this.colors.Reset;
+module.exports.color = function color(string, ...colorsr) {
+  const colorse = colorsr.join("") + string + colors.Reset;
   return colorse;
 };
 
