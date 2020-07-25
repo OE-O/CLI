@@ -3,7 +3,9 @@ The oe-o command line tool is a tool that allows you to install mods via the com
 
 ## Installation:
 
-`npm install -g oe-o-cli`
+```
+npm install -g oe-o-cli
+````
 
 ### Example usage:
 
