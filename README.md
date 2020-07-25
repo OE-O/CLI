@@ -1,7 +1,7 @@
 # oe-o-cli
 The oe-o command line tool is a tool that allows you to install mods via the command line thanks to nodejs.
 
-Installation:
+## Installation:
 
 `npm install -g oe-o-cli`
 
