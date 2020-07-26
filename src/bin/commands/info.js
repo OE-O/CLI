@@ -31,7 +31,7 @@ module.exports = {
                 name: body.name,
                 game: body.game,
                 desc: body.shortDesc,
-                id: body.id,
+                id: Number.parseInt(body.id),
                 url: `https://oe-o.tk/mods/${body.id}`, 
                 install: `oeo-cli install ${body.id}`               
             }
