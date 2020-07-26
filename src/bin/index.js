@@ -14,17 +14,17 @@ const options = {
 }
 
 if (!args.length) {
-    return console.log(emoji(color(" Please add an argument, eg: " + color("oeo help", colors.FgGreen), colors.FgRed), emojis.Cross));
+    return console.log(emoji(color(" Please add an argument, eg: " + color("oeo-cli help", colors.FgGreen), colors.FgRed), emojis.Cross));
 }
 if (args.includes("--force") || args.includes("-f")) {
     options.force = true;
     var e = args.indexOf("--force" || "-f");
-    args.splice(e);
+    args.splice(e, 1);
     console.log(color("Forced mode can cause unexpected errors.", colors.FgYellow));
 }
 if (args.includes("--debug") || args.includes("-d")) {
     var e = args.indexOf("--debug" || "-d");
-    args.splice(e);
+    args.splice(e, 1);
     options.debug = true;
     console.log(color("Debug mode can cause private info to be released, use with caution.", colors.FgRed));
 }
@@ -36,6 +36,8 @@ fs.readdirSync(__dirname + "/commands").filter(file => file.endsWith(".js")).for
     commands.set(prop.name, prop);
     logger.debug("Loaded command: " + colors.FgYellow + prop.name);
 });
-if(!commands.has(args[0])) return logger.error(` The command ${colors.FgGreen}${args[0]}${colors.FgRed} is not a valid command.`, `You can use ${colors.FgGreen}oeo help {command}${colors.FgRed} for a list of each command.`)
+if(!commands.has(args[0])) return logger.error(` The command ${colors.FgGreen}${args[0]}${colors.FgRed} is not a valid command.`, `You can use ${colors.FgGreen}oeo-cli help {command}${colors.FgRed} for a list of each command.`)
 var cmd = commands.get(command);
+let z = args.indexOf(command)
+args.splice(z, 1);
 cmd.execute(options, args)
