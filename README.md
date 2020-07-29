@@ -9,16 +9,16 @@ npm install -g oeo-cli
 
 ### Example usage:
 
-`oeo-cli install 420`
+<!-- `oeo-cli install 420`
 
-Installs the mod id 420, which is software inc+
+Installs the mod id 420, which is software inc+ -->
 
 `oeo-cli info 420`
 
 Returns info on the mod id 420.
 
-`oeo-cli search "query"`
+<!-- `oeo-cli search "query"`
 
-searches for a mod with the title of "query"
+searches for a mod with the title of "query" -->
 
 
