@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OE-O/CLI"
+    "url": "git://https://github.com/OE-O/CLI.git"
   },
   "keywords": [
     "command-line-tool",
