@@ -1,9 +1,7 @@
-const {
-    commands
-} = require('../../db');
-const {
-    colors
-} = require('../../console-utils');
+const { emoji } = require('../../console-utils');
+const { commands } = require('../../db');
+require('../../console-utils');
+
 module.exports = {
     name: "help",
     desc: "View a list of all the commands or a certain command",
@@ -14,25 +12,27 @@ module.exports = {
         desc: "The command to get help with."
     }],
     execute(options, args) {
-        var logger = options.logger;
-        if (options.forceMode) logger.debug("The --force tag has no effect on this command.");
-        logger.debug("Getting all commands.");
-        if(args[1]) {
-            if(!commands.has(args[1])) return logger.error(` The command ${colors.FgYellow}${args[1]}${colors.FgRed} does not exist, did you make a typo?`);
-            var command = commands.get(args[1]);
-            logger.log(`${colors.FgMagenta}oeo-cli ${colors.FgYellow}${command.name} ${colors.FgCyan}${command.usage} ${colors.FgBlue}- ${command.desc}`)
-            logger.log("Arguments:\n")
+        if (options.forceMode) {
+            console.log(emoji.warn, "The --force tag has no effect on this command.".warn);
+        }
+        if (options.debug) {
+            console.log(emoji.info, "Getting all commands.".info);
+        }
+        if (args[0]) {
+            if (!commands.has(args[0])) {
+                return console.log('The command'.warn, args[0].info, 'does not exist'.warn, 'did you make a typo?'.success);
+            }
+            var command = commands.get(args[0]);
+            console.log('oeo-cli'.prefix, command.name.info, command.usage.help, '-'.prefix, command.desc.help)
+            console.log("Arguments:\n")
             command.args.forEach(arg => {
-                var string = `${colors.FgCyan}${arg.key}${colors.FgBlue} - ${arg.desc} - ${colors.FgRed}Optional? ${colors.FgYellow}${arg.optional}`
-                logger.log(string)
+                console.log(arg.key.info, '-', arg.desc.help, '-', 'Optional?'.warn, arg.optional.help)
             })
             return;
         }
-        const output = [];
-        output.push(`For infomation on each command, use ${colors.FgMagenta}oeo-cli ${colors.FgYellow}help ${colors.FgCyan}{command}${colors.Reset}\n`)
+        console.log(emoji.info, 'For infomation on each command, use'.info, 'oeo-cli'.prefix, 'help {command}\n'.help)
         commands.forEach(command => {
-            output.push(`${command.desc} - ${colors.FgMagenta}oeo-cli ${colors.FgYellow}${command.name} ${colors.FgCyan}${command.usage}`)
+            console.log(command.desc.help, '-', 'oeo-cli'.prefix, command.name.info, command.usage.help)
         });
-        output.forEach(o => logger.log(o));
     }
 }

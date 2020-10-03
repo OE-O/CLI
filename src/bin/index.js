@@ -1,42 +1,43 @@
 #!/usr/bin/env node
 
-const {colors, color, emoji, emojis, resetColor} = require("../console-utils");
+const { emoji } = require("../console-utils");
 const fs = require('fs');
-const {commands} = require('../db');
-const Logging = require('../loggingClass')
+const { commands } = require('../db');
 
 const args = process.argv.slice(2);
 
 const options = {
     debug: false,
     force: false,
-    logger: undefined,
 }
 
 if (!args.length) {
-    return console.log(emoji(color(" Please add an argument, eg: " + color("oeo-cli help", colors.FgGreen), colors.FgRed), emojis.Cross));
+    return console.log(emoji.cross, 'Please add an argument, eg: '.error, "oeo-cli help".help,);
 }
 if (args.includes("--force") || args.includes("-f")) {
     options.force = true;
     var e = args.indexOf("--force" || "-f");
     args.splice(e, 1);
-    console.log(color("Forced mode can cause unexpected errors.", colors.FgYellow));
+    console.log(emoji.warning, "Forced mode can cause unexpected errors.".warn);
 }
 if (args.includes("--debug") || args.includes("-d")) {
     var e = args.indexOf("--debug" || "-d");
     args.splice(e, 1);
     options.debug = true;
-    console.log(color("Debug mode can cause private info to be released, use with caution.", colors.FgRed));
+    console.log(emoji.warning, "Debug mode can cause private info to be released, use with caution.".warn);
 }
-const logger = new Logging(options.debug);
-options.logger = logger;
 const command = args[0];
+
 fs.readdirSync(__dirname + "/commands").filter(file => file.endsWith(".js")).forEach(file => {
     const prop = require(`./commands/${file}`);
     commands.set(prop.name, prop);
-    logger.debug("Loaded command: " + colors.FgYellow + prop.name);
+    if (options.debug == true) {
+        console.log(emoji.info, "Loaded command: ".info, prop.name);
+    }
 });
-if(!commands.has(args[0])) return logger.error(` The command ${colors.FgGreen}${args[0]}${colors.FgRed} is not a valid command.`, `You can use ${colors.FgGreen}oeo-cli help {command}${colors.FgRed} for a list of each command.`)
+if (!commands.has(args[0])) {
+    return console.log(emoji.cross, 'The command'.warn, args[0].info, 'is not a valid command.'.warn, 'You can use'.success, 'oeo-cli help'.help, 'for a list of all commands.'.success);
+}
 var cmd = commands.get(command);
 let z = args.indexOf(command)
 args.splice(z, 1);

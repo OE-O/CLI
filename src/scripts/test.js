@@ -1,14 +1,19 @@
-const colortils = require('../console-utils');
-// test all consoletils
-const string = colortils.color(
-    'This should be red!',
-    colortils.colors.FgRed,
-);
-const anotherString = 'This should be normal!';
-console.log(string);
-console.log(anotherString);
-const emojiBad = colortils.emoji("Oh no, this should be a cross emoji!", colortils.emojis.Cross);
-const emojiGood = colortils.emoji("This should be good, and a tick emoji!", colortils.emojis.Tick);
-console.log(emojiBad + "\n" + emojiGood);
+const { emoji } = require('../console-utils');
 
-console.log(colortils.color(colortils.emoji(" Test passed!", colortils.emojis.Tick), colortils.colors.FgGreen, colortils.colors.BgBlack, colortils.colors.Bright))
+require('../console-utils');
+
+console.log('This should be blue!'.info);
+console.log('This should be cyan!'.help);
+console.log('This should be yellow!'.warn);
+console.log('This should be green!'.success);
+console.log('This should be red!'.error);
+console.log('This should be normal!');
+
+console.log('\n')
+console.log("Cross emoji: ", emoji.cross);
+console.log("Warning emoji: ", emoji.warning);
+console.log("Info emoji: ", emoji.info);
+console.log("Tick emoji: ", emoji.tick);
+
+console.log('\n')
+console.log("Test passed!".success, emoji.tick);

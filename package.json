@@ -1,6 +1,6 @@
 {
   "name": "oeo-cli",
-  "version": "0.1.1b",
+  "version": "0.2.0b",
   "description": "The oe-o command line tool is a tool that allows you to install mods via the commandline.",
   "main": "./src/bin/index.js",
   "bin": "./src/bin/index.js",
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/OE-O/oe-o-cli#readme",
   "devDependencies": {},
   "dependencies": {
-    "request": "^2.88.2"
+    "colors": "^1.4.0",
+    "https": "^1.0.0"
   }
 }
